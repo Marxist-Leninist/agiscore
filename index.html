@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>agiscore — frontier coding-agent leaderboard</title>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --ink: #1a1612;
+    --muted: #6a6258;
+    --line: #e7e2d8;
+    --accent: #f15a24;
+    --accent-bg: #fdf1eb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 56px 24px 96px; }
+  h1 { font-size: 34px; letter-spacing: -0.02em; margin: 0 0 8px; }
+  h1 .dot { color: var(--accent); }
+  .lede { color: var(--muted); margin: 0 0 32px; max-width: 60ch; }
+  .source-img {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    display: block;
+    margin: 24px 0 40px;
+  }
+  h2 { font-size: 22px; margin: 40px 0 16px; letter-spacing: -0.01em; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 15px;
+  }
+  th, td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: 0; }
+  th {
+    background: #f5f1ea;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 14px;
+  }
+  th.bench { width: 30%; }
+  td.bench { color: var(--ink); font-weight: 500; }
+  .pct { font-variant-numeric: tabular-nums; font-weight: 500; }
+  .note { color: var(--muted); font-size: 13px; display: block; margin-top: 2px; }
+  th.hl, td.hl { background: var(--accent-bg); }
+  th.hl { box-shadow: inset 0 0 0 1px var(--accent); position: relative; }
+  td.hl { box-shadow: inset 1px 0 0 var(--accent), inset -1px 0 0 var(--accent); }
+  tr:last-child td.hl { box-shadow: inset 1px 0 0 var(--accent), inset -1px 0 0 var(--accent), inset 0 -1px 0 var(--accent); }
+  tr:first-of-type th.hl { box-shadow: inset 1px 1px 0 var(--accent), inset -1px 0 0 var(--accent); }
+  footer {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+  <h1>agiscore<span class="dot">.</span></h1>
+  <p class="lede">
+    Side-by-side benchmark snapshots for frontier coding agents.
+    First entry: Cursor's <strong>Composer 2.5</strong> launch — May 2026.
+  </p>
+
+  <img class="source-img"
+       src="assets/composer-2.5-benchmarks.png"
+       alt="Composer 2.5 vs Opus 4.7, GPT-5.5, Composer 2 — benchmark table">
+
+  <h2>Composer 2.5 — May 2026</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="bench">Benchmark</th>
+        <th class="hl">Composer 2.5</th>
+        <th>Opus 4.7</th>
+        <th>GPT-5.5</th>
+        <th>Composer 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bench">Terminal-Bench 2.0</td>
+        <td class="hl pct">69.3%</td>
+        <td class="pct">69.4%</td>
+        <td class="pct">82.7%</td>
+        <td class="pct">61.7%</td>
+      </tr>
+      <tr>
+        <td class="bench">SWE-Bench Multilingual</td>
+        <td class="hl pct">79.8%</td>
+        <td class="pct">80.5%</td>
+        <td class="pct">77.8%</td>
+        <td class="pct">73.7%</td>
+      </tr>
+      <tr>
+        <td class="bench">CursorBench v3.1<span class="note">harder tasks</span></td>
+        <td class="hl pct">63.2%</td>
+        <td class="pct">64.8% <span class="note">max</span>61.6% <span class="note">xhigh (default)</span></td>
+        <td class="pct">64.3% <span class="note">xhigh</span>59.2% <span class="note">medium (default)</span></td>
+        <td class="pct">52.2%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Opus 4.7 and GPT-5.5 use self-reported scores for public evals.
+    Source image from Cursor's Composer 2.5 announcement.
+    Repo: <a href="https://github.com/Marxist-Leninist/agiscore">github.com/Marxist-Leninist/agiscore</a>.
+  </footer>
+</main>
+</body>
+</html>
